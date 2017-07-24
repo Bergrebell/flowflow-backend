@@ -1,0 +1,2 @@
+class Discharge < Parameter
+end
