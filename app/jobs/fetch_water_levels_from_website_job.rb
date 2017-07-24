@@ -1,6 +1,6 @@
 require 'open-uri'
 
-class FetchWaterLevelsJob < ApplicationJob
+class FetchWaterLevelsFromWebsiteJob < ApplicationJob
   queue_as :default
 
   def perform(*args)

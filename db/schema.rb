@@ -31,10 +31,4 @@ ActiveRecord::Schema.define(version: 20170717151554) do
     t.index ["water_id"], name: "index_stations_on_water_id", using: :btree
   end
 
-  create_table "waters", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
 end

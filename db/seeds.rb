@@ -1,9 +1,5 @@
-w = Water.find_or_create_by(name: 'Rhein')
-w.save!
-
 s = Station.find_or_create_by(name: 'Rheinkraftwerk Bad Säckingen')
 s.station_id = 123
-s.water = w
 s.save!
 
 m = Measurement.new
