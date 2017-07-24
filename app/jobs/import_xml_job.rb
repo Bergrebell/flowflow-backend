@@ -8,41 +8,49 @@ class ImportXmlJob < ApplicationJob
 
     doc = File.open('test/support/hydrodata_excerpt.xml') { |f| Nokogiri::XML(f) }
     stations = doc.xpath('//station')
+
     stations.each do |station|
-      s = Station.new
-      s.number          = station.attributes['number'].value
-      s.name            = station.attributes['name'].value
-      s.water_body_name = station.attributes['water-body-name'].value
-      s.water_body_type = station.attributes['water-body-type'].value
-      s.easting         = station.attributes['easting'].value
-      s.northing        = station.attributes['northing'].value
-      s.save!
+      begin
+        s = Station.find_or_initialize_by(number: station.attributes['number'].value)
+        s.name            = station.attributes['name'].value
+        s.water_body_name = station.attributes['water-body-name'].value
+        s.water_body_type = station.attributes['water-body-type'].value
+        s.easting         = station.attributes['easting'].value
+        s.northing        = station.attributes['northing'].value
+        s.save!
 
-      station.element_children.each do |child|
-        if child.name == 'parameter'
-
-          m = Measurement.new
-          set_type(child, m)
-
-          child.children.each do |child|
-
-            case child.name
-              when 'datetime'
-                #get datetime
-                m.datetime = child.children.text
-              when 'value'
-                #get warn_level & value
-                m.value = child.text&.to_i
-                m.warn_level = child.values[1]
-              when 'max-24h'
-                #get warn-level & value
-                m.max_24h = child.text&.to_i
-                m.warn_level_24h = child.values[1]
+        station.element_children.each do |child|
+          if child.name == 'parameter'
+            begin
+              m = Measurement.new
+              set_type(child, m)
+              set_attributes(child, m)
+              m.station = s
+              m.save!
+            rescue => exception
+              message = "*** ERROR: Could not save measurement with Station: #{station.name} and name: #{m.name}(#{exception})"
+              say message
             end
           end
-          m.station = s
-          m.save!
         end
+      rescue => exception
+        message = "*** ERROR: Could not save Station with name: #{station.name} (#{exception})"
+        say message
+      end
+    end
+  end
+
+  def set_attributes(child, m)
+    child.children.each do |child|
+      case child.name
+        when 'datetime'
+          m.datetime = child.children.text
+        when 'value'
+          m.value      = child.text&.to_i
+          m.warn_level = child.values[1]
+        when 'max-24h'
+          m.max_24h        = child.text&.to_i
+          m.warn_level_24h = child.values[1]
       end
     end
   end
