@@ -3,10 +3,21 @@ require 'open-uri'
 class ImportXmlJob < ApplicationJob
   queue_as :default
 
-  def perform(hydrodata_file_path, *args)
+  def perform(*args)
     puts 'Starting to fetch data...'
 
-    doc = File.open(hydrodata_file_path) { |f| Nokogiri::XML(f) }
+    doc = Nokogiri::XML(
+      open(
+        'https://www.hydrodata.ch/data/hydroweb.xml',
+        http_basic_authentication: [
+            Rails.application.secrets.HYDRODATA_USERNAME,
+            Rails.application.secrets.HYDRODATA_PASSWORD
+         ]
+      )
+    )
+
+    #doc = File.open(hydrodata_file_path) { |f| Nokogiri::XML(f) }
+
     stations = doc.xpath('//station')
 
     stations.each do |station|
