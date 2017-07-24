@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170724104023) do
   end
 
   create_table "stations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "number"
+    t.string   "number"
     t.string   "name"
     t.string   "water_body_name"
     t.string   "water_body_type"

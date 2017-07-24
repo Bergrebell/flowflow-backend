@@ -1,7 +1,7 @@
 class CreateStations < ActiveRecord::Migration[5.0]
   def change
     create_table :stations do |t|
-      t.integer :number
+      t.string :number
       t.string :name
       t.string :water_body_name
       t.string :water_body_type
