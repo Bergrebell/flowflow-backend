@@ -10,25 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717151554) do
+ActiveRecord::Schema.define(version: 20170724104023) do
 
   create_table "measurements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "quantity"
-    t.integer  "maximum_quantity"
-    t.datetime "reading_time"
-    t.integer  "station_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["station_id"], name: "index_measurements_on_station_id", using: :btree
+    t.datetime "datetime"
+    t.integer  "value"
+    t.integer  "max_24h"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "parameters", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "type"
+    t.integer  "variant"
+    t.string   "name"
+    t.string   "unit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "station_id"
+    t.integer  "number"
     t.string   "name"
-    t.integer  "water_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["water_id"], name: "index_stations_on_water_id", using: :btree
+    t.string   "water_body_name"
+    t.string   "water_body_type"
+    t.integer  "easting"
+    t.integer  "northing"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

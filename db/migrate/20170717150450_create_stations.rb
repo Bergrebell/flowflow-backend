@@ -1,9 +1,12 @@
 class CreateStations < ActiveRecord::Migration[5.0]
   def change
     create_table :stations do |t|
-      t.integer :station_id
+      t.integer :number
       t.string :name
-      t.references :water, index: true
+      t.string :water_body_name
+      t.string :water_body_type
+      t.integer :easting
+      t.integer :northing
 
       t.timestamps
     end
