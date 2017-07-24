@@ -1,2 +1,2 @@
-class Level < Parameter
+class Level < Measurement
 end

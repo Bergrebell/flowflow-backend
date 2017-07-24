@@ -1,2 +1,2 @@
-class Temperature < Parameter
+class Temperature < Measurement
 end

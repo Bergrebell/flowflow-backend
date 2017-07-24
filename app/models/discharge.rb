@@ -1,2 +1,2 @@
-class Discharge < Parameter
+class Discharge < Measurement
 end

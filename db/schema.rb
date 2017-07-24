@@ -14,19 +14,15 @@ ActiveRecord::Schema.define(version: 20170724104023) do
 
   create_table "measurements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "datetime"
-    t.integer  "value"
+    t.float    "value",          limit: 24
+    t.integer  "warn_level"
     t.integer  "max_24h"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "parameters", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "warn_level_24h"
     t.string   "type"
-    t.integer  "variant"
-    t.string   "name"
-    t.string   "unit"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "station_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["station_id"], name: "index_measurements_on_station_id", using: :btree
   end
 
   create_table "stations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -1,2 +1,2 @@
-class SeaLevel < Parameter
+class SeaLevel < Measurement
 end

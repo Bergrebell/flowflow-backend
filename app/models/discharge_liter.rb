@@ -1,2 +1,2 @@
-class DischargeLiter < Parameter
+class DischargeLiter < Measurement
 end
