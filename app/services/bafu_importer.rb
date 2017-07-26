@@ -12,7 +12,6 @@ class BafuImporter
     stations = @doc.xpath('//station')
 
     stations.each do |station|
-      if Station.find_by(number: )
       begin
         s = Station.find_or_initialize_by(number: station.attributes['number'].value)
         s.name            = station.attributes['name'].value
