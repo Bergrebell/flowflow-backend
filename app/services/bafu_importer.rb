@@ -1,24 +1,18 @@
-require 'open-uri'
-
 class BafuImporter
+
+  def initialize(xml_document)
+    @doc = xml_document
+  end
+
   def call
     puts 'Starting to fetch data...'
 
-    doc = Nokogiri::XML(
-      open(
-        'https://www.hydrodata.ch/data/hydroweb.xml',
-        http_basic_authentication: [
-            Rails.application.secrets.HYDRODATA_USERNAME,
-            Rails.application.secrets.HYDRODATA_PASSWORD
-         ]
-      )
-    )
-
     #doc = File.open(hydrodata_file_path) { |f| Nokogiri::XML(f) } TODO
 
-    stations = doc.xpath('//station')
+    stations = @doc.xpath('//station')
 
     stations.each do |station|
+      if Station.find_by(number: )
       begin
         s = Station.find_or_initialize_by(number: station.attributes['number'].value)
         s.name            = station.attributes['name'].value

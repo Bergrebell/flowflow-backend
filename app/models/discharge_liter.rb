@@ -1,4 +1,4 @@
 # parameter-type: 22
 class DischargeLiter < Measurement
-  UNIT = 'l'.freeze
+  UNIT = 'l/s'.freeze
 end
