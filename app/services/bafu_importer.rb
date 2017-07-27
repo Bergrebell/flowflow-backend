@@ -71,14 +71,19 @@ class BafuImporter
     case child.attributes['type'].value
       when '1'
         m.type = 'Level'
+        m.unit = 'm'
       when '2'
         m.type = 'SeaLevel'
+        m.unit = 'm ü. M.'
       when '3'
         m.type = 'Temperature'
+        m.unit = '°C'
       when '10'
         m.type = 'Discharge'
+        m.unit = 'm3/s'
       when '22'
         m.type = 'DischargeLiter'
+        m.unit = 'l/s'
     end
   end
 end
