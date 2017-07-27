@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+WaterBuddy(Working title) by:
 
-Things you may want to cover:
+Florian Unternährer & Roman Küpper
 
-* Ruby version
+## Ruby version
+- 2.3.1
 
-* System dependencies
+## Deployment
 
-* Configuration
+1.) Add Postgres service to Heroku
 
-* Database creation
+2.) Set secrets:
 
-* Database initialization
+`heroku config:set APP_SECRET='49f434...`
 
-* How to run the test suite
+`heroku config:set HYDRODATA_USERNAME='49f434...`
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+3.) Follow instructions under: https://devcenter.heroku.com/articles/getting-started-with-rails4#deploy-your-application-to-heroku
