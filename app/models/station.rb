@@ -5,4 +5,9 @@ class Station < ApplicationRecord
   has_many :levels
   has_many :sea_levels
   has_many :temperatures
+
+  validates_presence_of :number,
+                        :name,
+                        :water_body_name,
+                        :water_body_type
 end
