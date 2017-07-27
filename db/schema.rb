@@ -12,20 +12,23 @@
 
 ActiveRecord::Schema.define(version: 20170724104023) do
 
-  create_table "measurements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "measurements", force: :cascade do |t|
     t.datetime "datetime"
-    t.float    "value",          limit: 24
+    t.float    "value"
     t.integer  "warn_level"
     t.integer  "max_24h"
     t.integer  "warn_level_24h"
     t.string   "type"
     t.integer  "station_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.index ["station_id"], name: "index_measurements_on_station_id", using: :btree
   end
 
-  create_table "stations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "stations", force: :cascade do |t|
     t.string   "number"
     t.string   "name"
     t.string   "water_body_name"

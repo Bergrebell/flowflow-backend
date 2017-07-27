@@ -5,11 +5,9 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
   pool: 5
-  username: root
-  socket: /tmp/mysql.sock
 
 development:
   <<: *default
