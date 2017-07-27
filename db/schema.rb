@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170724104023) do
+ActiveRecord::Schema.define(version: 20170727181644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20170724104023) do
     t.integer  "station_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.boolean  "most_recent"
     t.index ["station_id"], name: "index_measurements_on_station_id", using: :btree
   end
 

@@ -5,9 +5,18 @@ class BafuImporter
   end
 
   def call
-    puts 'Starting to fetch data...'
+    ActiveRecord::Base.transaction do
+      set_most_recent
+      import_data
+    end
+  end
 
-    #doc = File.open(hydrodata_file_path) { |f| Nokogiri::XML(f) } TODO
+  def set_most_recent
+    Measurement.update_all(most_recent: false)
+  end
+
+  def import_data
+    puts 'Starting to fetch data...'
 
     stations = @doc.xpath('//station')
 
@@ -28,6 +37,7 @@ class BafuImporter
               set_type(child, m)
               set_attributes(child, m)
               m.station = s
+              m.most_recent = true
               m.save!
             rescue => exception
               message = "*** ERROR: Could not save measurement with Station: #{station.name} and name: #{m.name}(#{exception})"
