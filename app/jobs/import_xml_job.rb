@@ -16,8 +16,6 @@ class ImportXmlJob < ApplicationJob
       )
     )
 
-    #doc = File.open(hydrodata_file_path) { |f| Nokogiri::XML(f) }
-
     stations = doc.xpath('//station')
 
     stations.each do |station|
@@ -37,16 +35,15 @@ class ImportXmlJob < ApplicationJob
               set_type(child, m)
               set_attributes(child, m)
               m.station = s
+              m.unit = child.attributes['unit'].value
               m.save!
             rescue => exception
-              message = "*** ERROR: Could not save measurement with Station: #{station.name} and name: #{m.name}(#{exception})"
-              say message
+              puts "*** ERROR: Could not save measurement with Station: #{station.name} and name: #{m.name}(#{exception})"
             end
           end
         end
       rescue => exception
-        message = "*** ERROR: Could not save Station with name: #{station.name} (#{exception})"
-        say message
+        puts "*** ERROR: Could not save Station with name: #{station.name} (#{exception})"
       end
     end
   end
