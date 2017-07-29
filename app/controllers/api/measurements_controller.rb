@@ -1,7 +1,10 @@
 class Api::MeasurementsController < ApplicationController
   def index
-    m = Measurement.most_recent.select(:id, :station_id, :type, :value, :datetime, :unit)
-    mg = m.group_by {|m| m.station_id}
-    render json: mg.to_json
+    mg = Measurement
+      .most_recent
+      .map(&:serialize)
+      .group_by {|m| m[:stationId]}
+
+    render json: mg
   end
 end

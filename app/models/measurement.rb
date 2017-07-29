@@ -8,4 +8,14 @@ class Measurement < ApplicationRecord
                         :unit
 
   scope :most_recent, -> { where(most_recent: true) }
+
+  def serialize
+    {
+      datetime: datetime,
+      value: value,
+      measurementType: type,
+      stationId: station_id,
+      unit: unit
+    }
+  end
 end
