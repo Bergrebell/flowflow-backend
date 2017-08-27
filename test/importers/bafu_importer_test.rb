@@ -1,17 +1,14 @@
 require 'test_helper'
-require 'webmock/minitest'
 
-class ImportXmlJobTest < ActiveJob::TestCase
+class BafuImporterTest < ActiveJob::TestCase
 
   setup do
-    @job = ImportXmlJob.new
+    hydrodata_excerpt = File.open('test/support/hydrodata_excerpt.xml') { |f| Nokogiri::XML(f) }
+    @importer = BafuImporter.new(hydrodata_excerpt)
   end
 
   test 'perform' do
-    stub_request(:get, "https://www.hydrodata.ch/data/hydroweb.xml")
-      .to_return(:status => 200, :body => open('test/support/hydrodata_excerpt.xml'))
-
-    @job.perform
+    @importer.call
 
     assert_equal 240, Station.count
     assert_equal 508, Measurement.count
