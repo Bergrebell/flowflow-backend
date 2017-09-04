@@ -15,4 +15,16 @@ namespace :import do
 
     BafuImporter.new(doc).call
   end
+
+  desc 'Import csv from "http://data.geo.admin.ch/ch.meteoschweiz.swissmetnet/VQHA69.csv"'
+  task meteoschweiz_weatherdata: :environment do
+
+    open('tmp/weather_data.csv', 'wb') do |file|
+      file << open('http://data.geo.admin.ch/ch.meteoschweiz.swissmetnet/VQHA69.csv').read
+    end
+
+    doc = open('tmp/weather_data.csv')
+    WeatherMeasurementsImporter.new(doc).call
+
+  end
 end

@@ -7,7 +7,7 @@ class WeatherMeasurementsImporterTest < ActiveJob::TestCase
     @importer = WeatherMeasurementsImporter.new(weatherdata_excerpt)
   end
 
-  test 'perform' do
+  test 'import weather measurements' do
     @importer.call
 
     assert_equal 113, WeatherMeasurement.count
@@ -16,7 +16,7 @@ class WeatherMeasurementsImporterTest < ActiveJob::TestCase
       'TAE': [21.5, 0, 6.1, 0.0],
       'CGI': [23.5, 0, 4.7, 0.0],
       'PRE': [0, 0, 1.1, 0],
-      'THU': [21.4, 0, 6.1, 3.2]
+      'THU': [21.4, 0, 1.8, 0.0]
     }
 
     test_measurements.each do |number, values|
