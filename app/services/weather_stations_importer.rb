@@ -19,9 +19,9 @@ class WeatherStationsImporter
 
     weather_stations.each do |ws|
       begin
-        s = WeatherStation.find_or_initialize_by(number: ws[:number])
-        s.village = ws[:village]
-        s.easting = ws[:easting]
+        s          = WeatherStation.find_or_initialize_by(number: ws[:number])
+        s.village  = ws[:village]
+        s.easting  = ws[:easting]
         s.northing = ws[:northing]
         s.save
       rescue => exception

@@ -3,4 +3,7 @@ class WeatherStation < ApplicationRecord
                         :village,
                         :easting,
                         :northing
+  validates_uniqueness_of :number
+
+  has_one :weather_measurement
 end

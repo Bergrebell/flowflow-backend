@@ -7,4 +7,6 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  # load seed data into test db
+  load "#{Rails.root}/db/seeds.rb"
 end
