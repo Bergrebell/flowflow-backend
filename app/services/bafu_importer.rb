@@ -46,8 +46,7 @@ class BafuImporter
           end
         end
       rescue => exception
-        message = "*** ERROR: Could not save Station with name: #{station.name} (#{exception})"
-        say message
+        "*** ERROR: Could not save Station with name: #{station.name} (#{exception})"
       end
     end
   end
