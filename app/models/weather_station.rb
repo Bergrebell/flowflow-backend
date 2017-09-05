@@ -7,4 +7,8 @@ class WeatherStation < ApplicationRecord
 
   has_one :weather_measurement
   belongs_to :station
+
+  def coordinates
+    [easting, northing]
+  end
 end

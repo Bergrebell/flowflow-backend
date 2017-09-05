@@ -12,4 +12,8 @@ class Station < ApplicationRecord
                         :name,
                         :water_body_name,
                         :water_body_type
+
+  def coordinates
+    [easting, northing]
+  end
 end

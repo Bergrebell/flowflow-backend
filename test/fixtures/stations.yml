@@ -1,24 +1,26 @@
-0155:
-  number: "0155"
-  name: "Wiler, Limpachm (T)"
-  water_body_name: "Emme"
+basel:
+  number: "2199"
+  name: "Basel"
+  water_body_name: "Wiese"
   water_body_type: "river"
-  easting: 608220
-  northing: 223240
+  easting: 611800
+  northing: 269700
 
-1044:
-  number: "1044"
-  name: "Andelfingen Memograph"
-  water_body_name: "Thur"
-  water_body_type: "river"
-  easting: 693510
-  northing: 272500
+locarno:
+  number: "2022"
+  name: "Locarno"
+  water_body_name: "Lago Maggiore"
+  water_body_type: "lake"
+  easting: 705480
+  northing: 113380
 
-1289:
-  number: "1289"
-  name: "Basel
-  Rheinhalle 2"
-  water_body_name: "Rhein"
+st_gallen:
+  number: "2468"
+  name: "St. Gallen
+  Bruggen/Au"
+  water_body_name: "Sitter"
   water_body_type: "river"
-  easting: 613400
-  northing: 267650
+  easting: 742540
+  northing: 253230
+
+

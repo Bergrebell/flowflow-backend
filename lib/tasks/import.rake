@@ -25,6 +25,5 @@ namespace :import do
 
     doc = open('tmp/weather_data.csv')
     WeatherMeasurementsImporter.new(doc).call
-
   end
 end
