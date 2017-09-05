@@ -6,4 +6,5 @@ class WeatherStation < ApplicationRecord
   validates_uniqueness_of :number
 
   has_one :weather_measurement
+  belongs_to :station
 end
