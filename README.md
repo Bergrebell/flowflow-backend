@@ -7,6 +7,25 @@ Florian Unternährer & Roman Küpper
 ## Ruby version
 - 2.3.1
 
+## Populate Database
+0.) Set ENV variables on shell
+
+`export HYDRODATA_USERNAME=username`
+
+`export HYDRODATA_PASSWORD='pass word'`
+
+1.) Load Weather-Stations
+
+`rake db:seed`
+
+2.) Import Water-Stations and Measurements
+
+`rake import:bafu_hydrodata`
+
+3.) Import Weather-Measurements
+
+`rake import:meteoschweiz_weatherdata `
+
 ## Deployment
 
 1.) Add Postgres service to Heroku
