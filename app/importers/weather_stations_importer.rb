@@ -19,15 +19,21 @@ class WeatherStationsImporter
 
     weather_stations.each do |ws|
       begin
-        s          = WeatherStation.find_or_initialize_by(number: ws[:number])
-        s.village  = ws[:village]
-        s.easting  = ws[:easting]
-        s.northing = ws[:northing]
-        s.save
+        wss          = WeatherStation.find_or_initialize_by(number: ws[:number])
+        wss.village  = ws[:village]
+        wss.easting  = ws[:easting]
+        wss.northing = ws[:northing]
+        wss.station_id = set_station_id(wss).id
+        wss.save
       rescue => exception
         puts "*** ERROR: Could not save WeatherStation with number: #{ws[:number]} (#{exception})"
       end
     end
+  end
+
+  def set_station_id(weather_station)
+    weather_station_location = [weather_station.easting, weather_station.northing]
+    ConnectWeatherToWaterStationsService.new(weather_station_location).nearest_station
   end
 
 end

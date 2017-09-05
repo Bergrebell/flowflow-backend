@@ -58,6 +58,9 @@ ActiveRecord::Schema.define(version: 20170905173827) do
     t.integer  "northing"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "station_id"
+    t.index ["station_id"], name: "index_weather_stations_on_station_id", using: :btree
   end
 
+  add_foreign_key "weather_stations", "stations"
 end

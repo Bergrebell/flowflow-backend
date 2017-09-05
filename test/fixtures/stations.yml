@@ -1,0 +1,24 @@
+0155:
+  number: "0155"
+  name: "Wiler, Limpachm (T)"
+  water_body_name: "Emme"
+  water_body_type: "river"
+  easting: 608220
+  northing: 223240
+
+1044:
+  number: "1044"
+  name: "Andelfingen Memograph"
+  water_body_name: "Thur"
+  water_body_type: "river"
+  easting: 693510
+  northing: 272500
+
+1289:
+  number: "1289"
+  name: "Basel
+  Rheinhalle 2"
+  water_body_name: "Rhein"
+  water_body_type: "river"
+  easting: 613400
+  northing: 267650

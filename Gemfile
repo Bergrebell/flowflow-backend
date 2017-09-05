@@ -6,6 +6,7 @@ gem 'puma', '~> 3.0'
 gem 'nokogiri'
 gem 'active_model_serializers'
 gem 'rack-cors'
+gem 'knnball'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -16,7 +17,6 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'knnball'
 end
 
 group :test do
