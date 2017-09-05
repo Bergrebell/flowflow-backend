@@ -8,23 +8,16 @@ Florian Unternährer & Roman Küpper
 - 2.3.1
 
 ## Populate Database
-0.) Set ENV variables on shell
+1.) Set ENV variables on shell
 
 `export HYDRODATA_USERNAME=username`
 
 `export HYDRODATA_PASSWORD='pass word'`
 
-1.) Load Weather-Stations
+2.) Import Waters and Weather Stations and Measurements
 
-`rake db:seed`
+`rake import:all`
 
-2.) Import Water-Stations and Measurements
-
-`rake import:bafu_hydrodata`
-
-3.) Import Weather-Measurements
-
-`rake import:meteoschweiz_weatherdata `
 
 ## Deployment
 
