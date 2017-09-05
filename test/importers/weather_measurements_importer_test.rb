@@ -3,12 +3,13 @@ require 'test_helper'
 class WeatherMeasurementsImporterTest < ActiveJob::TestCase
 
   setup do
-    weatherdata_excerpt = 'test/support/weatherdata_excerpt.csv'
-    @importer = WeatherMeasurementsImporter.new(weatherdata_excerpt)
+    @weather_stations_importer = WeatherStationsImporter.new('lib/support/weather_stations.csv')
+    @weather_measurements_importer = WeatherMeasurementsImporter.new('test/support/weatherdata_excerpt.csv')
   end
 
   test 'import weather measurements' do
-    @importer.call
+    @weather_stations_importer.call
+    @weather_measurements_importer.call
 
     assert_equal 113, WeatherMeasurement.count
 

@@ -3,6 +3,9 @@ require 'test_helper'
 class ConnectWeatherToWaterStationsServiceTest < ActiveJob::TestCase
 
   def setup
+    @weather_stations_importer = WeatherStationsImporter.new('lib/support/weather_stations.csv')
+    @weather_stations_importer.call
+
     @basel = WeatherStation.find_by(number: 'BAS')
     @locarno = WeatherStation.find_by(number: 'OTL')
     @st_gallen = WeatherStation.find_by(number: 'STG')
