@@ -27,6 +27,7 @@ class WeatherMeasurementsImporter
         m.wind_speed  = wm['fu3010z0']
         m.rain_amount = wm['rre150z0']
         m.weather_station = WeatherStation.find_by(number: wm['stn'])
+        m.datetime = wm['time'].to_datetime
         m.save
       rescue => exception
         "*** ERROR: Could not save WeatherMeasurement with number: #{wm.number} (#{exception})"

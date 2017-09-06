@@ -42,12 +42,15 @@ ActiveRecord::Schema.define(version: 20170905173827) do
   end
 
   create_table "weather_measurements", force: :cascade do |t|
-    t.string  "number"
-    t.float   "air_temp"
-    t.float   "sun_time"
-    t.float   "wind_speed"
-    t.float   "rain_amount"
-    t.integer "weather_station_id"
+    t.string   "number"
+    t.float    "air_temp"
+    t.float    "sun_time"
+    t.float    "wind_speed"
+    t.float    "rain_amount"
+    t.datetime "datetime"
+    t.integer  "weather_station_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.index ["weather_station_id"], name: "index_weather_measurements_on_weather_station_id", using: :btree
   end
 
