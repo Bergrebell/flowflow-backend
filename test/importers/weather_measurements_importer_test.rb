@@ -7,7 +7,7 @@ class WeatherMeasurementsImporterTest < ActiveJob::TestCase
   end
 
   test 'import weather measurements' do
-    assert_equal 113, WeatherMeasurement.count
+    assert_equal 114, WeatherMeasurement.count
 
     test_measurements = {
       'TAE': [21.5, 0, 6.1, 0.0],

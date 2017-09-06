@@ -5,6 +5,7 @@ basel:
   water_body_type: "river"
   easting: 611800
   northing: 269700
+  weather_station: weather_basel
 
 locarno:
   number: "2022"

@@ -1,0 +1,21 @@
+basel_discharge:
+  datetime: "2017-09-06 15:00:00"
+  value: 3.0
+  warn_level: 1
+  max_24h: 3
+  warn_level_24h: 1
+  type: "Discharge"
+  station: basel
+  most_recent: true
+  unit: "m3/s"
+
+basel_sealevel:
+  datetime: "2017-09-06 15:00:00"
+  value: 246.0
+  warn_level: nil
+  max_24h: 246
+  warn_level_24h: nil
+  type: "SeaLevel"
+  station: basel
+  most_recent: true
+  unit: "m ü. M."

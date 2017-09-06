@@ -2,7 +2,7 @@ require 'test_helper'
 
 class WeatherMeasurementTest < ActiveSupport::TestCase
   def setup
-    @stg = weather_measurements(:stg)
+    @bsl = weather_measurements(:bsl)
   end
 
   test 'valid indicators' do
@@ -13,7 +13,7 @@ class WeatherMeasurementTest < ActiveSupport::TestCase
         :datetime   => 'Wed, 06 Sep 2017 14:00:00 CEST +02:00'
     }
 
-    assert_equal @stg.as_json, expected_json
+    assert_equal @bsl.as_json, expected_json
   end
 
 end
