@@ -7,8 +7,8 @@ class Api::StationsController < ApplicationController
 
   def weather
     station = Station.find(station_params[:id])
-    indicator = station.weather_station.weather_measurement.as_json
-    render json: indicator
+    weather_measurement = station.weather_station.weather_measurement.as_json
+    render json: weather_measurement
   end
 
   private

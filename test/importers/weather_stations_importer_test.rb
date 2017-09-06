@@ -7,7 +7,7 @@ class WeatherStationsImporterTest < ActiveJob::TestCase
   end
 
   test 'weather station import data' do
-    assert_equal 113, WeatherStation.count
+    assert_equal 116, WeatherStation.count
 
     eastings = {
         BER: 601929,

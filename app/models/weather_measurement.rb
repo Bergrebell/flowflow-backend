@@ -2,6 +2,7 @@
 # sun_time:     min, Zehnminutensumme(how many of the ten minutes are sunny)
 # wind_speed:  km/h, Zehnminutenmittel
 # rain_amount:   mm, Zehnminutensumme
+# datetime: UTC (2h behind MESZ)
 class WeatherMeasurement < ApplicationRecord
   validates_presence_of :number
 
@@ -11,7 +12,8 @@ class WeatherMeasurement < ApplicationRecord
     {
         'air_temp':   air_temp,
         'wind_speed': wind_speed,
-        'indicator':  indicator
+        'indicator':  indicator,
+        'datetime': datetime.in_time_zone('Zurich')
     }
   end
 

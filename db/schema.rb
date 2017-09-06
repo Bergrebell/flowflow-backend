@@ -37,8 +37,10 @@ ActiveRecord::Schema.define(version: 20170905173827) do
     t.string   "water_body_type"
     t.integer  "easting"
     t.integer  "northing"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "weather_station_id"
+    t.index ["weather_station_id"], name: "index_stations_on_weather_station_id", using: :btree
   end
 
   create_table "weather_measurements", force: :cascade do |t|
@@ -61,9 +63,7 @@ ActiveRecord::Schema.define(version: 20170905173827) do
     t.integer  "northing"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "station_id"
-    t.index ["station_id"], name: "index_weather_stations_on_station_id", using: :btree
   end
 
-  add_foreign_key "weather_stations", "stations"
+  add_foreign_key "stations", "weather_stations"
 end

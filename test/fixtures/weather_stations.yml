@@ -1,0 +1,17 @@
+weather_basel:
+  number: 'wbs'
+  village: 'Near Basel'
+  easting: 610000
+  northing: 261000
+
+weather_locarno:
+  number: 'wlo'
+  village: 'Near Locarno'
+  easting: 715000
+  northing: 114000
+
+weather_st_gallen:
+  number: 'wsg'
+  village: 'Near St Gallen'
+  easting: 750000
+  northing: 250000

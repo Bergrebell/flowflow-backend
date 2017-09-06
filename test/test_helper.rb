@@ -8,8 +8,8 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   def import_all
-    import_waters
     import_weathers
+    import_waters
   end
 
   def import_waters

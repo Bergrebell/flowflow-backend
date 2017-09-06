@@ -16,18 +16,19 @@ class BafuImporter
   end
 
   def import_data
-    puts 'Starting to fetch data...'
+    puts 'Starting to fetch waters_data...'
 
     stations = @doc.xpath('//station')
 
     stations.each do |station|
       begin
         s = Station.find_or_initialize_by(number: station.attributes['number'].value)
-        s.name            = station.attributes['name'].value
-        s.water_body_name = station.attributes['water-body-name'].value
-        s.water_body_type = station.attributes['water-body-type'].value
-        s.easting         = station.attributes['easting'].value
-        s.northing        = station.attributes['northing'].value
+        s.name               = station.attributes['name'].value
+        s.water_body_name    = station.attributes['water-body-name'].value
+        s.water_body_type    = station.attributes['water-body-type'].value
+        s.easting            = station.attributes['easting'].value
+        s.northing           = station.attributes['northing'].value
+        s.weather_station_id = set_weather_station_id(s).id
         s.save!
 
         station.element_children.each do |child|
@@ -49,6 +50,11 @@ class BafuImporter
         "*** ERROR: Could not save Station with name: #{station.name} (#{exception})"
       end
     end
+  end
+
+  def set_weather_station_id(station)
+    weather_station_location = [station.easting, station.northing]
+    ConnectWaterToWeatherStationsService.new(weather_station_location).nearest_weather_station
   end
 
   def set_attributes(child, m)

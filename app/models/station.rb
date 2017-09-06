@@ -6,7 +6,7 @@ class Station < ApplicationRecord
   has_many :sea_levels
   has_many :temperatures
 
-  has_one :weather_station
+  belongs_to :weather_station
 
   validates_presence_of :number,
                         :name,
