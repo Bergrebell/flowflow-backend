@@ -3,12 +3,10 @@ require 'test_helper'
 class WeatherStationsImporterTest < ActiveJob::TestCase
 
   setup do
-    @weather_measurements_importer = WeatherStationsImporter.new('lib/support/weather_stations.csv')
+    import_weather_stations
   end
 
   test 'weather station import data' do
-    @weather_measurements_importer.call
-
     assert_equal 113, WeatherStation.count
 
     eastings = {
