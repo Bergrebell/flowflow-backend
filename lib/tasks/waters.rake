@@ -15,6 +15,14 @@ namespace :waters do
     BafuImporter.new(doc).call
   end
 
+  desc 'imports missing temperatures to lakes'
+  task import_temperatures_to_lakes: :environment do
+    doc = Nokogiri::HTML(
+      open('http://meteonews.ch/de/Artikel/Lakes/CH/de')
+    )
+    LakeTemperatureImporter.new(doc).call
+  end
+
   desc 'removes measurements that are older than four days from database'
   task remove_old_measurements: :environment do
     Measurement.where('created_at < ?', 4.day.ago).delete_all

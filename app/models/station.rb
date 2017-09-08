@@ -13,6 +13,8 @@ class Station < ApplicationRecord
                         :water_body_name,
                         :water_body_type
 
+  scope :lakes, -> { where(water_body_type: 'lake') }
+
   def coordinates
     [easting, northing]
   end
