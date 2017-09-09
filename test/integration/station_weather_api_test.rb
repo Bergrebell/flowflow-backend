@@ -16,7 +16,7 @@ class StationWeatherApiTest < ActionDispatch::IntegrationTest
     expected_response = {
         "air_temp"=>16.0,
         "wind_speed"=>15.8,
-        "indicator"=>"sun_cloud",
+        "indicator"=>"cloud",
         "datetime"=>"2017-09-06T14:00:00.000+02:00"
     }
     assert_equal weather, expected_response
