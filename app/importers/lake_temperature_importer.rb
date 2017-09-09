@@ -36,7 +36,8 @@ class LakeTemperatureImporter
         datetime: Time.now,
         value:    lake_temperature,
         type:     'Temperature',
-        unit:     '°C'
+        unit:     '°C',
+        most_recent: true
       )
     end
   end
