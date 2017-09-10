@@ -6,13 +6,8 @@ class BafuImporter
 
   def call
     ActiveRecord::Base.transaction do
-      set_most_recent
       import_data
     end
-  end
-
-  def set_most_recent
-    Measurement.update_all(most_recent: false)
   end
 
   def import_data
