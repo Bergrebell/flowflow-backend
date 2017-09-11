@@ -9,16 +9,14 @@ class MeasurementsApiTest < ActionDispatch::IntegrationTest
     get api_measurements_path
     assert_response :success
 
-    measurements = JSON.parse(@response.body)
-    assert_equal 1, measurements.count
+    basel_measurements = JSON.parse(@response.body)[@basel.id.to_s]
+    assert_equal 2, basel_measurements.count
 
-    expected_response = {
-        "#{@basel.id}"=>[
-            {"datetime"=>"2017-09-06T15:00:00.000Z", "value"=>3.0, "measurementType"=>"Discharge", "stationId"=>@basel.id, "unit"=>"m3/s"},
-            {"datetime"=>"2017-09-06T15:00:00.000Z", "value"=>246.0, "measurementType"=>"SeaLevel", "stationId"=>@basel.id, "unit"=>"m ü. M."}
-        ]
-    }
+    expected_response = [
+        {"datetime"=>"2017-11-09T23:00:00.000Z", "value"=>3.0, "measurementType"=>"Discharge", "stationId"=>@basel.id, "unit"=>"m3/s"},
+        {"datetime"=>"2017-11-09T23:00:00.000Z", "value"=>246.0, "measurementType"=>"SeaLevel", "stationId"=>@basel.id, "unit"=>"m ü. M."}
+    ]
 
-    assert_equal measurements, expected_response
+    assert_equal basel_measurements, expected_response
   end
 end

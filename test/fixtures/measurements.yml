@@ -1,5 +1,5 @@
 basel_discharge:
-  datetime: "2017-09-06 15:00:00"
+  datetime: <%= Time.new(2017,11,11) - 1.day %>
   value: 3.0
   warn_level: 1
   max_24h: 3
@@ -10,7 +10,7 @@ basel_discharge:
   unit: "m3/s"
 
 basel_sealevel:
-  datetime: "2017-09-06 15:00:00"
+  datetime: <%= Time.new(2017,11,11) - 1.day %>
   value: 246.0
   warn_level: nil
   max_24h: 246
@@ -18,4 +18,26 @@ basel_sealevel:
   type: "SeaLevel"
   station: basel
   most_recent: true
+  unit: "m ü. M."
+
+most_recent_measurment:
+  datetime: <%= Time.new(2017,11,11) %>
+  value: 11111.0
+  warn_level: nil
+  max_24h: 11111
+  warn_level_24h: nil
+  type: "SeaLevel"
+  station: st_gallen
+  most_recent: true
+  unit: "m ü. M."
+
+old_measurement:
+  datetime: <%= Time.new(2017,11,11) - 10.days %>
+  value: 11111.0
+  warn_level: nil
+  max_24h: 11111
+  warn_level_24h: nil
+  type: "SeaLevel"
+  station: st_gallen
+  most_recent: false
   unit: "m ü. M."
