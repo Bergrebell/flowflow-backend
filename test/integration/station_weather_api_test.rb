@@ -17,8 +17,8 @@ class StationWeatherApiTest < ActionDispatch::IntegrationTest
         "air_temp"=>16.0,
         "wind_speed"=>15.8,
         "indicator"=>"cloud",
-        "datetime"=>"2017-09-06T14:00:00.000+02:00"
+        "datetime"=>"2017-09-06T12:00:00.000Z"
     }
-    assert_equal weather, expected_response
+    assert_equal expected_response, weather
   end
 end

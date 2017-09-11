@@ -13,7 +13,7 @@ class WeatherMeasurement < ApplicationRecord
         'air_temp':   air_temp,
         'wind_speed': wind_speed,
         'indicator':  indicator,
-        'datetime': datetime.in_time_zone('Zurich')
+        'datetime': datetime
     }
   end
 
