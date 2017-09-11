@@ -10,11 +10,14 @@ class MeasurementsApiTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     basel_measurements = JSON.parse(@response.body)[@basel.id.to_s]
-    assert_equal 2, basel_measurements.count
+    assert_equal 5, basel_measurements.count
 
     expected_response = [
-        {"datetime"=>"2017-11-09T23:00:00.000Z", "value"=>3.0, "measurementType"=>"Discharge", "stationId"=>@basel.id, "unit"=>"m3/s"},
-        {"datetime"=>"2017-11-09T23:00:00.000Z", "value"=>246.0, "measurementType"=>"SeaLevel", "stationId"=>@basel.id, "unit"=>"m ü. M."}
+        {"datetime"=>"2017-11-09T23:00:00.000Z", "value"=>3.0, "measurementType"=>"Discharge", "stationId"=>745744336, "unit"=>"m3/s"},
+        {"datetime"=>"2017-11-09T23:00:00.000Z", "value"=>246.0, "measurementType"=>"SeaLevel", "stationId"=>745744336, "unit"=>"m ü. M."},
+        {"datetime"=>"2017-11-09T23:00:00.000Z", "value"=>21.0, "measurementType"=>"Temperature", "stationId"=>745744336, "unit"=>"m ü. M."},
+        {"datetime"=>"2017-11-09T23:00:00.000Z", "value"=>100.0, "measurementType"=>"Level", "stationId"=>745744336, "unit"=>"m ü. M."},
+        {"datetime"=>"2017-11-09T23:00:00.000Z", "value"=>12.0, "measurementType"=>"DischargeLiter", "stationId"=>745744336, "unit"=>"m ü. M."}
     ]
 
     assert_equal basel_measurements, expected_response

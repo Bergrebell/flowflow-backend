@@ -22,6 +22,54 @@ basel_sealevel:
   unit: "m ü. M."
   created_at: <%= Time.new(2017,11,11) - 1.day %>
 
+basel_temperature:
+  datetime: <%= Time.new(2017,11,11) - 1.day %>
+  value: 21.0
+  warn_level: nil
+  max_24h: 21
+  warn_level_24h: nil
+  type: "Temperature"
+  station: basel
+  most_recent: true
+  unit: "°C"
+  created_at: <%= Time.new(2017,11,11) - 1.day %>
+
+basel_temperature_two:
+  datetime: <%= Time.new(2017,11,11) - 2.day %>
+  value: 23.0
+  warn_level: nil
+  max_24h: 23
+  warn_level_24h: nil
+  type: "Temperature"
+  station: basel
+  most_recent: false
+  unit: "°C"
+  created_at: <%= Time.new(2017,11,11) - 1.day %>
+
+basel_level:
+  datetime: <%= Time.new(2017,11,11) - 1.day %>
+  value: 100
+  warn_level: nil
+  max_24h: 100
+  warn_level_24h: nil
+  type: "Level"
+  station: basel
+  most_recent: true
+  unit: "m"
+  created_at: <%= Time.new(2017,11,11) - 1.day %>
+
+basel_discharge_liter:
+  datetime: <%= Time.new(2017,11,11) - 1.day %>
+  value: 12
+  warn_level: nil
+  max_24h: 12
+  warn_level_24h: nil
+  type: "DischargeLiter"
+  station: basel
+  most_recent: true
+  unit: "l/s"
+  created_at: <%= Time.new(2017,11,11) - 1.day %>
+
 most_recent_measurement:
   datetime: <%= Time.new(2017,11,11) %>
   value: 11111.0

@@ -19,23 +19,22 @@ class HistoryService
   private
 
   def serialize
-    # temperatures          = @station.temperatures
-    # type_sea_levels       = @station.sea_levels
-    # type_levels           = @station.levels
-    # type_discharge_liters = @station.discharge_liters
-    discharge_hash
-  end
-
-  def discharge_hash
-    type_discharge_mean_week = @station.discharges.less_than_week_old.average(:value).to_f
-    @station.discharges.map do |d|
-      {
-        value: d.value,
-        mean_7: type_discharge_mean_week,
-        datetime: d.datetime
-      }
+    measurement_types = %w(temperatures discharges sea_levels levels discharge_liters)
+    measurements = {}
+    measurement_types.each do |m|
+      measurements[m] = @station.send(m).less_than_week_old.map do |d|
+        {
+          value: d.value,
+          mean_7: weekly_average(m),
+          datetime: d.datetime
+        }
+      end
     end
+    measurements
   end
 
+  def weekly_average(m)
+    @station.send(m).less_than_week_old.average(:value).to_f
+  end
 
 end
