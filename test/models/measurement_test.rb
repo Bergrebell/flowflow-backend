@@ -17,7 +17,7 @@ class MeasurementTest < ActiveSupport::TestCase
 
   test 'less_than_week_old scope' do
     travel_to reference_date do
-      assert_equal 6, Measurement.less_than_week_old.count
+      assert_equal 7, Measurement.less_than_week_old.count
       assert_not_includes Measurement.less_than_week_old, @older_than_week
     end
   end
