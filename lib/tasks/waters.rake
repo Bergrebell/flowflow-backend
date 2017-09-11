@@ -36,8 +36,8 @@ namespace :waters do
     Measurement.update_all(most_recent: false)
   end
 
-  desc 'removes measurements that are older than four days from database'
+  desc 'removes measurements that are older than a week from database'
   task remove_old_measurements: :environment do
-    Measurement.where('created_at < ?', 1.day.ago).delete_all
+    Measurement.where('created_at < ?', 7.day.ago).delete_all
   end
 end
