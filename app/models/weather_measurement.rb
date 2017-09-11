@@ -21,7 +21,6 @@ class WeatherMeasurement < ApplicationRecord
 
   def indicator
     if rain_amount.between?(0, 1)
-
       if sun_time > 8
         'sun'
       elsif sun_time.between?(2, 8)
@@ -29,7 +28,6 @@ class WeatherMeasurement < ApplicationRecord
       else
         'cloud'
       end
-
     else
       'rain'
     end

@@ -8,6 +8,7 @@ basel_discharge:
   station: basel
   most_recent: true
   unit: "m3/s"
+  created_at: <%= Time.new(2017,11,11) - 1.day %>
 
 basel_sealevel:
   datetime: <%= Time.new(2017,11,11) - 1.day %>
@@ -19,8 +20,9 @@ basel_sealevel:
   station: basel
   most_recent: true
   unit: "m ü. M."
+  created_at: <%= Time.new(2017,11,11) - 1.day %>
 
-most_recent_measurment:
+most_recent_measurement:
   datetime: <%= Time.new(2017,11,11) %>
   value: 11111.0
   warn_level: nil
@@ -30,6 +32,19 @@ most_recent_measurment:
   station: st_gallen
   most_recent: true
   unit: "m ü. M."
+  created_at: <%= Time.new(2017,11,11) %>
+
+older_than_week:
+  datetime: <%= Time.new(2017,11,11) - 2.days %>
+  value: 11111.0
+  warn_level: nil
+  max_24h: 11111
+  warn_level_24h: nil
+  type: "SeaLevel"
+  station: st_gallen
+  most_recent: true
+  unit: "m ü. M."
+  created_at: <%= Time.new(2017,11,11) - 8.days %>
 
 old_measurement:
   datetime: <%= Time.new(2017,11,11) - 10.days %>
@@ -41,3 +56,4 @@ old_measurement:
   station: st_gallen
   most_recent: false
   unit: "m ü. M."
+  created_at: <%= Time.new(2017,11,11) - 10.days %>

@@ -8,6 +8,10 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def reference_date
+    Date.new(2017,11,11)
+  end
+
   def import_all
     import_weathers
     import_waters
