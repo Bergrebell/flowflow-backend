@@ -17,32 +17,36 @@ class BafuImporter
 
     stations.each do |station|
       begin
-        s = Station.find_or_initialize_by(number: station.attributes['number'].value)
-        s.name               = station.attributes['name'].value
-        s.water_body_name    = station.attributes['water-body-name'].value
-        s.water_body_type    = station.attributes['water-body-type'].value
-        s.easting            = station.attributes['easting'].value
-        s.northing           = station.attributes['northing'].value
-        s.weather_station_id = set_weather_station_id(s).id
-        s.save!
+        station_object = Station.find_or_initialize_by(number: station.attributes['number'].value)
+        station_object.name               = station.attributes['name'].value
+        station_object.water_body_name    = station.attributes['water-body-name'].value
+        station_object.water_body_type    = station.attributes['water-body-type'].value
+        station_object.easting            = station.attributes['easting'].value
+        station_object.northing           = station.attributes['northing'].value
+        station_object.weather_station_id = set_weather_station_id(station_object).id
+        station_object.save!
 
-        station.element_children.each do |child|
-          if child.name == 'parameter'
-            begin
-              m = Measurement.new
-              set_type(child, m)
-              set_attributes(child, m)
-              m.station = s
-              m.most_recent = true
-              m.save!
-            rescue => exception
-              message = "*** ERROR: Could not save measurement with Station: #{station.name} and name: #{m.name}(#{exception})"
-              say message
-            end
-          end
-        end
+        add_measurements(station, station_object)
       rescue => exception
         "*** ERROR: Could not save Station with name: #{station.name} (#{exception})"
+      end
+    end
+  end
+
+  def add_measurements(station, station_object)
+    station.element_children.each do |child|
+      if child.name == 'parameter'
+        begin
+          m = Measurement.new
+          set_type(child, m)
+          set_attributes(child, m)
+          m.station     = station_object
+          m.most_recent = true
+          m.save!
+        rescue => exception
+          message = "*** ERROR: Could not save measurement with Station: #{station.name} and name: #{m.name}(#{exception})"
+          say message
+        end
       end
     end
   end
