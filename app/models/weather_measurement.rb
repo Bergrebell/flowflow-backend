@@ -8,12 +8,12 @@ class WeatherMeasurement < ApplicationRecord
 
   belongs_to :weather_station
 
-  def as_json
+  def serialize
     {
-        'air_temp':   air_temp,
-        'wind_speed': wind_speed,
-        'indicator':  indicator,
-        'datetime': datetime
+      airTemp: air_temp,
+      windSpeed: wind_speed,
+      indicator: indicator,
+      datetime: datetime
     }
   end
 

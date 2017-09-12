@@ -2,12 +2,12 @@ class Api::StationsController < ApplicationController
   before_action :set_station, only: [:weather, :history]
 
   def index
-    stations = Station.all.as_json(only: [:id, :name, :water_body_name])
+    stations = Station.all.map(&:serialize)
     render json: stations
   end
 
   def weather
-    weather_measurement = @station.weather_station.weather_measurement.as_json
+    weather_measurement = @station.weather_station.weather_measurement.serialize
     render json: weather_measurement
   end
 

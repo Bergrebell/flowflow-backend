@@ -9,10 +9,10 @@ class StationsApiTest < ActionDispatch::IntegrationTest
     assert_equal 3, stations.count
 
     expected_response = [
-        { 'id' => 745744336, 'name' => 'Basel', "water_body_name" => 'Wiese' },
-        { 'id' => 81157957, 'name' => 'Locarno', "water_body_name" => 'Lago Maggiore' },
-        { 'id' => 566109658, 'name' => 'St. Gallen Bruggen/Au', "water_body_name" => 'Sitter' }
+        { 'id' => 745744336, 'name' => 'Basel', "waterBodyName" => 'Wiese' },
+        { 'id' => 81157957, 'name' => 'Locarno', "waterBodyName" => 'Lago Maggiore' },
+        { 'id' => 566109658, 'name' => 'St. Gallen Bruggen/Au', "waterBodyName" => 'Sitter' }
     ]
-    assert_equal stations, expected_response
+    assert_equal expected_response, stations
   end
 end

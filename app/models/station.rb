@@ -15,6 +15,14 @@ class Station < ApplicationRecord
 
   scope :lakes, -> { where(water_body_type: 'lake') }
 
+  def serialize
+    {
+      id: id,
+      name: name,
+      waterBodyName: water_body_name
+    }
+  end
+
   def coordinates
     [easting, northing]
   end

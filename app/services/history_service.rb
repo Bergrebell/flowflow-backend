@@ -22,10 +22,10 @@ class HistoryService
     measurement_types = %w(temperatures discharges sea_levels levels discharge_liters)
     measurements = {}
     measurement_types.each do |m|
-      measurements[m] = @station.send(m).less_than_week_old.map do |d|
+      measurements[m.camelize.downcase] = @station.send(m).less_than_week_old.map do |d|
         {
           value: d.value,
-          mean_7: weekly_average(m),
+          weeklyAverage: weekly_average(m),
           datetime: d.datetime
         }
       end
