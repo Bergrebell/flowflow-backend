@@ -2,11 +2,12 @@ require 'test_helper'
 
 class WeatherMeasurementTest < ActiveSupport::TestCase
   def setup
-    @bsl = weather_measurements(:bsl)
+    @bsl = weather_measurements(:w_m_bsl)
   end
 
   test 'valid indicators' do
     expected_json = {
+        :measurementType => "Weather",
         :airTemp   => 16.0,
         :windSpeed => 15.8,
         :indicator  => 'cloud',

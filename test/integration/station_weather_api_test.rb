@@ -11,9 +11,10 @@ class StationWeatherApiTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     weather = JSON.parse(@response.body)
-    assert_equal 4, weather.count
+    assert_equal 5, weather.count
 
     expected_response = {
+        "measurementType"=>"Weather",
         "airTemp"=>16.0,
         "windSpeed"=>15.8,
         "indicator"=>"cloud",

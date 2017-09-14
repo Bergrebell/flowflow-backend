@@ -14,6 +14,7 @@ locarno:
   water_body_type: "lake"
   easting: 705480
   northing: 113380
+  weather_station: weather_locarno
 
 st_gallen:
   number: "2468"
@@ -23,3 +24,4 @@ st_gallen:
   water_body_type: "river"
   easting: 742540
   northing: 253230
+  weather_station: weather_st_gallen

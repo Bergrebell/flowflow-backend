@@ -10,6 +10,7 @@ class WeatherMeasurement < ApplicationRecord
 
   def serialize
     {
+      measurementType: 'Weather',
       airTemp: air_temp,
       windSpeed: wind_speed,
       indicator: indicator,
