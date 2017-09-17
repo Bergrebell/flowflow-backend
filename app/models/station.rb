@@ -26,7 +26,10 @@ class Station < ApplicationRecord
     {
       id: id,
       name: name,
-      waterBodyName: water_body_name
+      number: number,
+      waterBodyName: water_body_name,
+      northing: northing,
+      easting: easting
     }
   end
 
