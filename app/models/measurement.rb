@@ -17,7 +17,7 @@ class Measurement < ApplicationRecord
       value: value,
       measurementType: type,
       stationId: station_id,
-      unit: unit,
+      unit: unit
     }
   end
 
