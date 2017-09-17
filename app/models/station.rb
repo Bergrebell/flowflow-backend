@@ -7,6 +7,7 @@ class Station < ApplicationRecord
   has_many :temperatures
 
   belongs_to :weather_station
+  has_one :weather_measurement, through: :weather_station
 
   validates_presence_of :number,
                         :name,
@@ -14,6 +15,12 @@ class Station < ApplicationRecord
                         :water_body_type
 
   scope :lakes, -> { where(water_body_type: 'lake') }
+
+  def has_measurements_younger_than_a_day?
+    measurements.most_recent
+                .map { |m| m.measured_less_than_day_ago? }
+                .any?
+  end
 
   def serialize
     {

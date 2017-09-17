@@ -7,8 +7,13 @@ class Measurement < ApplicationRecord
                         :station_id,
                         :unit
 
-  scope :most_recent       , -> { where(most_recent: true) }
+  scope :most_recent, -> { where(most_recent: true) }
   scope :less_than_week_old, -> { where('created_at >= ?', 1.week.ago) }
+  scope :measured_less_than_day_ago, -> { where('datetime >= ?', 1.day.ago) }
+
+  def measured_less_than_day_ago?
+    datetime >= 1.day.ago
+  end
 
   def serialize
     {

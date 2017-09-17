@@ -9,7 +9,7 @@ class MeasurementTest < ActiveSupport::TestCase
 
   test 'most_recent scope' do
     travel_to reference_date do
-      assert_equal 7, Measurement.most_recent.count
+      assert_equal 8, Measurement.most_recent.count
       assert_not_includes Measurement.most_recent, @old_measurement
       assert_includes Measurement.most_recent, @most_recent_measurement
     end
@@ -17,7 +17,7 @@ class MeasurementTest < ActiveSupport::TestCase
 
   test 'less_than_week_old scope' do
     travel_to reference_date do
-      assert_equal 7, Measurement.less_than_week_old.count
+      assert_equal 8, Measurement.less_than_week_old.count
       assert_not_includes Measurement.less_than_week_old, @older_than_week
     end
   end

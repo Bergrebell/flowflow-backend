@@ -2,7 +2,10 @@ class Api::StationsController < ApplicationController
   before_action :set_station, only: [:weather, :history]
 
   def index
-    stations = Station.all.map(&:serialize)
+    stations = Station.all
+                      .select(&:has_measurements_younger_than_a_day?)
+                      .map(&:serialize)
+
     render json: stations
   end
 
