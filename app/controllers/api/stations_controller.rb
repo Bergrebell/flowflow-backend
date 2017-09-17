@@ -2,8 +2,11 @@ class Api::StationsController < ApplicationController
   before_action :set_station, only: [:weather, :history]
 
   def index
+    # Client.joins(:orders).where('orders.created_at' => time_range)
     stations = Station.all
-                      .select(&:has_measurements_younger_than_a_day?)
+                      .joins(:measurements)
+                      .where('measurements.datetime >= ?', 1.day.ago)
+                      .distinct
                       .map(&:serialize)
 
     render json: stations
