@@ -10,7 +10,7 @@ namespace :weather do
   desc 'Imports weather measurements'
   task measurements: :environment do
     open('tmp/weather_data.csv', 'wb') do |file|
-      file << open('http://data.geo.admin.ch/ch.meteoschweiz.swissmetnet/VQHA69.csv').read
+      file << open('https://data.geo.admin.ch/ch.meteoschweiz.swissmetnet/VQHA69.csv').read
     end
 
     doc = open('tmp/weather_data.csv')
