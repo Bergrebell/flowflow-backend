@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.0.2'
+gem 'rails', '~> 5.2.0'
 gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'nokogiri'
@@ -29,4 +29,4 @@ end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-ruby '2.3.1' # for heroku
+ruby '2.5.1' # for heroku
