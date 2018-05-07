@@ -14,8 +14,8 @@ namespace :waters do
       open(
         'https://www.hydrodata.ch/data/hydroweb.xml',
         http_basic_authentication: [
-            Rails.application.secrets.HYDRODATA_USERNAME,
-            Rails.application.secrets.HYDRODATA_PASSWORD
+            Rails.application.credentials.HYDRODATA_USERNAME,
+            Rails.application.credentials.HYDRODATA_PASSWORD
          ]
       )
     )
