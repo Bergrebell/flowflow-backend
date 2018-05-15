@@ -12,6 +12,12 @@ class Api::StationsController < ApplicationController
     render json: stations
   end
 
+  def show
+    @station = Station.find(params[:id])
+
+    render json: @station
+  end
+
   def weather
     weather_measurement = @station.weather_station.weather_measurement.serialize
     render json: weather_measurement
