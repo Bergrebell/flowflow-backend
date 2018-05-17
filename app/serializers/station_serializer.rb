@@ -23,7 +23,7 @@ class StationSerializer < ActiveModel::Serializer
 
   def serialize(*measurement_keys)
     data = measurements(measurement_keys).group_by(&:unit)
-    data_points = data.values.first.sort_by(&:datetime)
+    data_points = data.values.first&.sort_by(&:datetime)
 
     raise 'Multiple units found in data set.' if data.keys.count > 1
 
