@@ -7,7 +7,6 @@ class Api::StationsController < ApplicationController
                       .joins(:measurements)
                       .where('measurements.datetime >= ?', 1.day.ago)
                       .distinct
-                      .map(&:serialize)
 
     render json: stations
   end
