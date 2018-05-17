@@ -1,9 +1,9 @@
 class StationSerializer < ActiveModel::Serializer
   attributes :id,
-             :name,
-             :water_body_name,
-             :water_body_type,
-             :temperature,
+             :name
+  attribute  :water_body_name, key: :waterBodyName
+  attribute  :water_body_type, key: :waterBodyType
+  attributes :temperature,
              :discharge,
              :level
 
