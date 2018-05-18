@@ -62,10 +62,10 @@ class BafuImporter
         when 'datetime'
           m.datetime = child.children.text
         when 'value'
-          m.value      = child.text&.to_i
+          m.value      = child.text&.to_f
           m.warn_level = child.values[1]
         when 'max-24h'
-          m.max_24h        = child.text&.to_i
+          m.max_24h        = child.text&.to_f
           m.warn_level_24h = child.values[1]
       end
     end
