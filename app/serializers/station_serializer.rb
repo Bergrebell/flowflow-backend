@@ -35,7 +35,7 @@ class StationSerializer < ActiveModel::Serializer
 
   def measurements(measurement_keys)
     measurement_keys
-      .map { |measurement_key| object.send(measurement_key).last_week }
+      .map { |measurement_key| object.send(measurement_key).less_than_week_old }
       .flatten
       .uniq { |measurement| [measurement.datetime, measurement.unit] }
   end
