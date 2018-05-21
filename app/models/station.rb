@@ -24,12 +24,8 @@ class Station < ApplicationRecord
 
   def serialize
     {
-      id: id,
       name: name,
-      number: number,
-      waterBodyName: water_body_name,
-      northing: northing,
-      easting: easting
+      waterBodyName: water_body_name
     }
   end
 

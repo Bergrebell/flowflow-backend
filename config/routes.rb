@@ -5,5 +5,7 @@ Rails.application.routes.draw do
     get 'station(/:id)/history', to: 'stations#history', as: :station_history
 
     get 'measurements', to: 'measurements#index'
+
+    get :weather, to: 'weather#at_location'
   end
 end

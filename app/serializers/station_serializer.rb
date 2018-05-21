@@ -1,6 +1,8 @@
 class StationSerializer < ActiveModel::Serializer
   attributes :id,
-             :name
+             :name,
+             :latitude,
+             :longitude
   attribute  :water_body_name, key: :waterBodyName
   attribute  :water_body_type, key: :waterBodyType
   attributes :temperature,
@@ -17,6 +19,14 @@ class StationSerializer < ActiveModel::Serializer
 
   def level
     serialize :levels, :sea_levels
+  end
+
+  def latitude
+    gps_coordinates[0]
+  end
+
+  def longitude
+    gps_coordinates[1]
   end
 
   private
@@ -38,5 +48,9 @@ class StationSerializer < ActiveModel::Serializer
       .map { |measurement_key| object.send(measurement_key).less_than_week_old }
       .flatten
       .uniq { |measurement| [measurement.datetime, measurement.unit] }
+  end
+
+  def gps_coordinates
+    Swissgrid::WGS84(object.coordinates)
   end
 end
