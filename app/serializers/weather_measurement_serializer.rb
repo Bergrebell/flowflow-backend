@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WeatherMeasurementSerializer < ActiveModel::Serializer
   attribute :station
   attribute :air_temp, key: :airTemperature

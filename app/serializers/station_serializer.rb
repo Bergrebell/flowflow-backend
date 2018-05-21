@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StationSerializer < ActiveModel::Serializer
   attributes :id,
              :name,

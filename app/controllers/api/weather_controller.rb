@@ -1,5 +1,6 @@
-class Api::WeatherController < ApplicationController
+# frozen_string_literal: true
 
+class Api::WeatherController < ApplicationController
   def at_location
     @gps_coordinates = [params[:latitude], params[:longitude]].map(&:to_f)
     return render status: 422 unless gps_coordinates_valid?
