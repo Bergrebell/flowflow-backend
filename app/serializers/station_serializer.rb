@@ -1,15 +1,10 @@
 # frozen_string_literal: true
 
 class StationSerializer < ActiveModel::Serializer
-  attributes :id,
-             :name,
-             :latitude,
-             :longitude
-  attribute  :water_body_name, key: :waterBodyName
-  attribute  :water_body_type, key: :waterBodyType
-  attributes :temperature,
-             :discharge,
-             :level
+  attribute :name
+  attribute :water_body_name, key: :waterBodyName
+  attribute :water_body_type, key: :waterBodyType
+  attributes :latitude, :longitude
 
   def temperature
     serialize :temperatures
