@@ -12,7 +12,7 @@ namespace :waters do
   task import_stations_and_measurements: :environment do
     doc = Nokogiri::XML(
       open(
-        'https://www.hydrodata.ch/data/hydroweb.xml',
+        'https://www.hydrodata.ch/data/xml/hydroweb.xml',
         http_basic_authentication: [
             Rails.application.credentials.HYDRODATA_USERNAME,
             Rails.application.credentials.HYDRODATA_PASSWORD
