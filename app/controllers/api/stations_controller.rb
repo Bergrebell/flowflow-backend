@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Api::StationsController < ApplicationController
-  before_action :set_station, only: [:weather, :history]
+  before_action :set_station, only: %i[weather history]
 
   def index
     # Client.joins(:orders).where('orders.created_at' => time_range)
@@ -15,14 +17,13 @@ class Api::StationsController < ApplicationController
   def show
     @station = Station.find(params[:id])
 
-    render json: @station
+    render json: StationSerializerWithMeasurements.new(@station).as_json
   end
 
   def weather
     weather_measurement = @station.weather_station.weather_measurement.serialize
     render json: weather_measurement
   end
-
 
   def history
     history = HistoryService.new(@station).call
@@ -40,5 +41,4 @@ class Api::StationsController < ApplicationController
       :id
     )
   end
-
 end

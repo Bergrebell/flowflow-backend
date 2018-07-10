@@ -7,6 +7,7 @@ gem 'nokogiri'
 gem 'active_model_serializers'
 gem 'rack-cors'
 gem 'knnball'
+gem 'swissgrid'
 
 group :development, :test do
   gem 'byebug', platform: :mri

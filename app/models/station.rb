@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Station < ApplicationRecord
   has_many :measurements
   has_many :discharge_liters
@@ -18,7 +20,7 @@ class Station < ApplicationRecord
 
   def has_measurements_younger_than_a_day?
     measurements.most_recent
-                .map { |m| m.measured_less_than_day_ago? }
+                .map(&:measured_less_than_day_ago?)
                 .any?
   end
 
@@ -26,10 +28,8 @@ class Station < ApplicationRecord
     {
       id: id,
       name: name,
-      number: number,
       waterBodyName: water_body_name,
-      northing: northing,
-      easting: easting
+      waterBodyType: water_body_type
     }
   end
 
