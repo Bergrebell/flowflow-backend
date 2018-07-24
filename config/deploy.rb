@@ -4,7 +4,7 @@
 lock '~> 3.11.0'
 
 set :application, 'flowflow'
-set :repo_url, 'git@bitbucket.org:RollingRo/hydrodaten.git'
+set :repo_url, 'git@bitbucket.org:flowflowch/hydrodaten.git'
 set :deploy_to, '/home/rails/rails_project'
 set :linked_files, %w[config/master.key]
 
