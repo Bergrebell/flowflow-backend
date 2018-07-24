@@ -1,0 +1,7 @@
+production:
+  ssh:
+    host: api.flowflow.ch
+    user: root
+  database:
+    name: hydrodaten_production
+    user: rails

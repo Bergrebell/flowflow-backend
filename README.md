@@ -1,23 +1,21 @@
-# README
+# FlowFlow
 
-WaterBuddy(Working title) by:
-
-Florian Unternährer & Roman Küpper
-
-## Ruby version
-- 2.3.1
+Roman Küpper & Serge Hänni
 
 ## Populate Database
-1.) Set ENV variables on shell
 
-`export HYDRODATA_USERNAME=username`
-
-`export HYDRODATA_PASSWORD='pass word'`
-
-2.) Import Waters and Weather Stations and Measurements
+Import Waters and Weather Stations and Measurements (take care, we have an API limit!):
 
 `rake import:all`
 
+Dump production database:
+
+```
+gem install dafuse
+dafuse dump production
+```
+
+You find the database dump in `/tmp/database`.
 
 ## Deployment
 
