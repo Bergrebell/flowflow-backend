@@ -6,6 +6,7 @@ class WeatherMeasurementSerializer < ActiveModel::Serializer
   attribute :sun_time, key: :sunshine
   attribute :wind_speed, key: :windSpeed
   attribute :rain_amount, key: :precipitation
+  attribute :weather_icon, key: :indicator
 
   def measured_at
     object.datetime
@@ -25,5 +26,9 @@ class WeatherMeasurementSerializer < ActiveModel::Serializer
 
   def rain_amount
     { unit: 'mm', description: 'Precipitation within the last 10min', value: object.rain_amount }
+  end
+
+  def weather_icon
+    {description: 'Weather indicator [sun, sun_cloud, cloud, rain]', value: object.indicator}
   end
 end
