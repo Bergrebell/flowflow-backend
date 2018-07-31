@@ -18,8 +18,6 @@ class WeatherMeasurement < ApplicationRecord
     }
   end
 
-  private
-
   def indicator
     if rain_amount.between?(0, 1)
       if sun_time > 8
