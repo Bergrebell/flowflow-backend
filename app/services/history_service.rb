@@ -19,23 +19,29 @@ class HistoryService
 
   def history
     %w[Temperature Discharge SeaLevel Level DischargeLiter].map do |type|
+      average = Measurement.where(type: type, datetime: (59.days.ago.to_date..Date.tomorrow), station: @station).average(:value).to_f
+
       {
-        type.downcase.pluralize => @station
-          .measurements
-          .where(datetime: (59.days.ago..Date.tomorrow))
-          .where(type: type)
-          .order(:datetime)
-          .pluck(:value)
-          .to_a
-          .each_cons(3)
-          .with_index
-          .select { |_measurements, index| (index % 3).zero? }
-          .map { |measurements, _index| measurements.sum.fdiv(3) }
+        type.downcase.pluralize => { values: averages(type).to_a.map { |hash| hash.dig('average') }, average: average }
       }
     end.reduce({}) { |hash, measurements| hash.merge(measurements) }
   end
 
   private
+
+  def averages(type)
+    query = <<-SQL
+      SELECT
+        TIMESTAMP WITH TIME ZONE 'epoch' + INTERVAL '1 second' * round(extract('epoch' FROM datetime) / 259200) * 259200 AS timestamp,
+        avg(value) AS average
+      FROM measurements
+      WHERE type = '#{type}' AND station_id = #{@station.id}
+      GROUP BY round(extract('epoch' FROM datetime) / 259200)
+      ORDER BY timestamp
+    SQL
+
+    ActiveRecord::Base.connection.execute(query)
+  end
 
   def serialize
     measurement_types = %w[temperatures discharges sea_levels levels discharge_liters]

@@ -26,7 +26,7 @@ class Api::StationsController < ApplicationController
   end
 
   def history
-    history = HistoryService.new(@station).call
+    history = HistoryService.new(@station).history
     render json: history
   end
 

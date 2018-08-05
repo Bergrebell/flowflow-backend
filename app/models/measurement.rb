@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Measurement < ApplicationRecord
   belongs_to :station
 
@@ -20,5 +22,4 @@ class Measurement < ApplicationRecord
       unit: unit
     }
   end
-
 end
