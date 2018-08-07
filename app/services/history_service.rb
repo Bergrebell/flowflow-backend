@@ -20,11 +20,11 @@ class HistoryService
   def history
     %w[Temperature Discharge SeaLevel Level DischargeLiter].map do |type|
       average = Measurement.where(type: type, datetime: (59.days.ago.to_date..Date.tomorrow), station: @station).average(:value).to_f
-
+      next if average == 0.0
       {
         type.downcase.pluralize => { values: averages(type).to_a.map { |hash| hash.dig('average') }, average: average }
       }
-    end.reduce({}) { |hash, measurements| hash.merge(measurements) }
+    end.compact.reduce({}) { |hash, measurements| hash.merge(measurements) }
   end
 
   private

@@ -25,11 +25,7 @@ class HistoryServiceTest < ActiveJob::TestCase
           1.0, 4.0, 7.0, 10.0, 13.0, 16.0, 19.0, 22.0, 25.0, 28.0, 31.0, 34.0, 37.0, 40.0, 43.0, 46.0, 49.0, 52.0, 55.0, 58.0
         ],
         average: 29.5
-      },
-      'discharges' => { values: [], average: 0.0 },
-      'sealevels' => { values: [], average: 0.0 },
-      'levels' => { values: [], average: 0.0 },
-      'dischargeliters' => { values: [], average: 0.0 }
+      }
     }
 
     assert_equal expected_serialized_history, HistoryService.new(@station).history
