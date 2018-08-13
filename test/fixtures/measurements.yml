@@ -108,7 +108,7 @@ old_measurement:
 
 locarno_has_only_one_old_measurement:
   datetime: <%= Time.new(2012,11,11) %>
-  value: 12.0
+  value: 502.0
   warn_level: nil
   max_24h: 12
   warn_level_24h: nil
