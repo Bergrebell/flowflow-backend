@@ -17,7 +17,7 @@ class StationSerializerWithMeasurements < StationSerializer
 
   def water
     [[:temperature, temperature], [:discharge, discharge], [:level, level]]
-      .select { |_key, measurement| measurement[:values].adapter.present? }
+      .select { |_key, measurement| measurement.present? }
       .to_h
   end
 
