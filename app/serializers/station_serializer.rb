@@ -50,10 +50,14 @@ class StationSerializer < ActiveModel::Serializer
 
     raise 'Multiple units found in data set.' if data.keys.count > 1
 
-    {
-      unit: data.keys.first,
-      values: ActiveModelSerializers::SerializableResource.new(data_points)
-    }
+    if data_points.blank?
+      nil
+    else
+      {
+        unit: data.keys.first,
+        values: ActiveModelSerializers::SerializableResource.new(data_points)
+      }
+    end
   end
 
   def measurements(measurement_keys)
