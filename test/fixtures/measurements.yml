@@ -83,7 +83,7 @@ most_recent_measurement:
   created_at: <%= Time.new(2017,11,11) %>
 
 older_than_week:
-  datetime: <%= Time.new(2017,11,11) - 2.days %>
+  datetime: <%= Time.new(2017,11,11) - 8.days %>
   value: 11111.0
   warn_level: nil
   max_24h: 11111
@@ -116,4 +116,4 @@ locarno_has_only_one_old_measurement:
   station: locarno
   most_recent: true
   unit: "m ü. M."
-  created_at: <%= Time.new(2017,11,11) %>
+  created_at: <%= Time.new(2012,11,11) %>
