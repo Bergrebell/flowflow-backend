@@ -4,6 +4,10 @@ Roman Küpper & Serge Hänni
 
 ## Populate Database
 
+Load fixtures for a single station (Lago Maggiore, Locarno) with random measurements:
+
+`rake db:fixtures:load`
+
 Import Waters and Weather Stations and Measurements (take care, we have an API limit!):
 
 `rake import:all`
