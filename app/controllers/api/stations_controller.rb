@@ -10,6 +10,7 @@ module Api
                         .joins(:measurements)
                         .where('measurements.datetime >= ?', 1.day.ago)
                         .distinct
+                        .sort_by { |station| station.name }
                         .map(&:serialize)
 
       render json: stations
@@ -27,7 +28,7 @@ module Api
     end
 
     def history
-      history = HistoryService.new(@station).history
+      history = HistoryService.new(@station).call
       render json: history
     end
 

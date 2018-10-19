@@ -6,7 +6,10 @@ Roman Küpper & Serge Hänni
 
 Load fixtures for a single station (Lago Maggiore, Locarno) with random measurements:
 
-`rake db:fixtures:load`
+```
+bin/rails db:fixtures:load
+bin/rails db:seed
+```
 
 Import Waters and Weather Stations and Measurements (take care, we have an API limit!):
 

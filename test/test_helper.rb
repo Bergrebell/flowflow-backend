@@ -9,7 +9,7 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   def reference_date
-    Date.new(2017,11,11)
+    Date.new(2017, 11, 11)
   end
 
   def import_all
