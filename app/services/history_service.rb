@@ -22,7 +22,7 @@ class HistoryService
 
   def history
     ["Temperature", "Discharge", "DischargeLiter", "Level", "SeaLevel"].map do |type|
-      average = Measurement.where(type: type, datetime: (2.month.ago.to_date..Date.tomorrow), station: @station).average(:value).to_f
+      average = Measurement.where(type: type, datetime: (59.days.ago.to_date..Date.tomorrow), station: @station).average(:value).to_f
       next if average == 0.0
 
       {
@@ -39,7 +39,7 @@ class HistoryService
         TIMESTAMP WITH TIME ZONE 'epoch' + INTERVAL '1 second' * round(extract('epoch' FROM datetime) / 259200) * 259200 AS timestamp,
         avg(value) AS average
       FROM measurements
-      WHERE type = '#{measurement_type}' AND station_id = #{@station.id} AND datetime > '#{2.month.ago.to_date}'
+      WHERE type = '#{measurement_type}' AND station_id = #{@station.id} AND datetime >= '#{59.days.ago.to_date}'
       GROUP BY round(extract('epoch' FROM datetime) / 259200)
       ORDER BY timestamp
     SQL
