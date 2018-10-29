@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
 # {
-#   waterlevel: [{
-#     value: 125, // aktueller wert
-#     mean_24: 120,
-#     datetime:
-#   }, {}, {}, {}],
-#   temperatur: []
-# }
+#     "temperatures": {
+#         "values": [
+#             15.0,
+#             20.3333333333333,
+#             24.0,
+#              ...
+#         ],
+#         "average": 22.4285714285714
+#     }, 
+
 class HistoryService
   def initialize(station)
     @station = station
@@ -18,25 +21,25 @@ class HistoryService
   end
 
   def history
-    [%w[Temperature], %w[Discharge DischargeLiter], %w[Level SeaLevel]].map do |types|
-      average = Measurement.where(type: types, datetime: (59.days.ago.to_date..Date.tomorrow), station: @station).average(:value).to_f
+    ["Temperature", "Discharge", "DischargeLiter", "Level", "SeaLevel"].map do |type|
+      average = Measurement.where(type: type, datetime: (2.month.ago.to_date..Date.tomorrow), station: @station).average(:value).to_f
       next if average == 0.0
 
       {
-        types.first.downcase.pluralize => { values: averages(types).to_a.map { |hash| hash.dig('average') }, average: average }
+        type.downcase.pluralize => { values: averages(type).to_a.map { |hash| hash.dig('average') }, average: average }
       }
     end.compact.reduce({}) { |hash, measurements| hash.merge(measurements) }
   end
 
   private
 
-  def averages(types)
+  def averages(measurement_type)
     query = <<-SQL
       SELECT
         TIMESTAMP WITH TIME ZONE 'epoch' + INTERVAL '1 second' * round(extract('epoch' FROM datetime) / 259200) * 259200 AS timestamp,
         avg(value) AS average
       FROM measurements
-      WHERE type IN (#{types.map { |type| "'#{type}'" }.join(', ')}) AND station_id = #{@station.id}
+      WHERE type = '#{measurement_type}' AND station_id = #{@station.id} AND datetime > '#{2.month.ago.to_date}'
       GROUP BY round(extract('epoch' FROM datetime) / 259200)
       ORDER BY timestamp
     SQL
