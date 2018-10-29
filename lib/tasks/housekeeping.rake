@@ -1,4 +1,4 @@
-namespace :history do
+namespace :housekeeping do
   desc 'Export and removes old entries from the database'
   task export: :environment do
     Measurement.where('datetime < ?', 60.days.ago).find_each do |measurement|
@@ -11,5 +11,10 @@ namespace :history do
 
       measurement.destroy!
     end
+  end
+
+  desc 'Vacuums the postgres database to free up space'
+  task db: :environment do
+    ActiveRecord::Base.connection.execute('VACUUM FULL')
   end
 end
