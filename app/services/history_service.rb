@@ -14,7 +14,7 @@ class HistoryService
   end
 
   def call
-    serialize
+    history
   end
 
   def history
@@ -42,22 +42,6 @@ class HistoryService
     SQL
 
     ActiveRecord::Base.connection.execute(query)
-  end
-
-  def serialize
-    measurement_types = %w[temperatures discharges sea_levels levels discharge_liters]
-    measurements = {}
-    measurement_types.each do |m|
-      measurements[m.camelize.downcase] = @station.send(m).less_than_week_old.map do |d|
-        {
-          value: d.value,
-          weeklyAverage: weekly_average(m),
-          datetime: d.datetime
-        }
-      end
-    end
-
-    measurements
   end
 
   def weekly_average(m)
