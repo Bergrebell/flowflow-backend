@@ -4,6 +4,8 @@ Roman Küpper & Serge Hänni
 
 ## Populate Database
 
+Make sure to add the master.key file in the `/config`-directory.
+
 Load fixtures for a single station (Lago Maggiore, Locarno) with random measurements:
 
 ```

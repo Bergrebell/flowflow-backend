@@ -16,7 +16,10 @@
 # Ignore Byebug command history file.
 .byebug_history
 
+# IDE stuff
 .idea/
+logfile
+TAGS
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key

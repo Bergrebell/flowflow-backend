@@ -32,7 +32,9 @@ class LakeTemperatureImporter
 
   def create_measurement(lake_name, lake_temperature)
     station_numbers_by_name(lake_name).each do |number|
-      Station.find_by(number: number).measurements.create(
+      station = Station.find_by(number: number)
+      return unless station
+      station.measurements.create(
         datetime: Time.now,
         value:    lake_temperature,
         type:     'Temperature',
