@@ -35,14 +35,7 @@ class HistoryServiceTest < ActiveJob::TestCase
   end
 
   test 'should return correct measurement values' do
-    expected_serialized_history = {
-      'temperatures' => {
-        values: [
-          1.0, 4.0, 7.0, 10.0, 13.0, 16.0, 19.0, 22.0, 25.0, 28.0, 31.0, 34.0, 37.0, 40.0, 43.0, 46.0, 49.0, 52.0, 55.0, 58.0
-        ],
-        average: 29.5
-      }
-    }
+    expected_serialized_history = {"temperatures"=>{:values=>[0.0, 2.0, 5.0, 8.0, 11.0, 14.0, 17.0, 20.0, 23.0, 26.0, 29.0, 32.0, 35.0, 38.0, 41.0, 44.0, 47.0, 50.0, 53.0, 56.0, 58.5], :average=>29.5}}
 
     assert_equal expected_serialized_history, HistoryService.new(@station).history
   end
