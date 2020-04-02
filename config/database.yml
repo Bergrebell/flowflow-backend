@@ -13,10 +13,14 @@ development:
   <<: *default
   database: hydrodaten_development
 
-
 test:
   <<: *default
   database: hydrodaten_test
+
+staging:
+ <<: *default
+ url: <%= ENV['DATABASE_URL'] %>
+ database: hydrodaten_production
 
 production:
   <<: *default

@@ -18,7 +18,7 @@ class WeatherMeasurementsImporter
 
     weather_measurements = CSV.parse(File.readlines(@doc)
                   .drop(2)
-                  .join, headers: true, col_sep: '|')
+                  .join, headers: true, col_sep: ';')
 
     weather_measurements.each do |wm|
       m             = WeatherMeasurement.find_or_initialize_by(number: wm['stn'])
