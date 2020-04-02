@@ -55,7 +55,7 @@ GEM
     awesome_print (1.8.0)
     builder (3.2.4)
     byebug (11.1.1)
-    capistrano (3.12.1)
+    capistrano (3.11.2)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
@@ -184,7 +184,7 @@ DEPENDENCIES
   active_model_serializers
   awesome_print
   byebug
-  capistrano
+  capistrano (~> 3.11.0)
   capistrano-rails
   capistrano-rvm
   capistrano3-puma
