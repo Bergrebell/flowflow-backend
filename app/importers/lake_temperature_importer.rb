@@ -31,6 +31,12 @@ class LakeTemperatureImporter
   private
 
   def create_measurement(lake_name, lake_temperature)
+    if !station_numbers_by_name(lake_name)
+      puts "No Station Number found for name: #{lake_name}. Skipping ..."
+      return
+    end
+
+    puts "ADD LAKE MEASUREMENT: #{lake_name}"
     station_numbers_by_name(lake_name).each do |number|
       station = Station.find_by(number: number)
       return unless station

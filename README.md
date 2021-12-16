@@ -2,8 +2,12 @@
 Roman Küpper & Serge Hänni
 
 ## Datasources
-https://data.geo.admin.ch/ch.meteoschweiz.messwerte-aktuell/VQHA80.csv
-https://www.hydrodata.ch/data/xml/hydroweb.xml (get credentials via `EDITOR="vi" rails credentials:show`)
+APIs:
+* https://data.geo.admin.ch/ch.meteoschweiz.messwerte-aktuell/VQHA80.csv
+* https://www.hydrodata.ch/data/xml/hydroweb.xml (get credentials via `EDITOR="vi" rails credentials:show`)
+
+Webscraping:
+* http://meteonews.ch/de/Artikel/Lakes/CH/de
 
 ## Populate Database
 
