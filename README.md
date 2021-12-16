@@ -1,6 +1,9 @@
 # FlowFlow
-
 Roman Küpper & Serge Hänni
+
+## Datasources
+https://data.geo.admin.ch/ch.meteoschweiz.messwerte-aktuell/VQHA80.csv
+https://www.hydrodata.ch/data/xml/hydroweb.xml (get credentials via `EDITOR="vi" rails credentials:show`)
 
 ## Populate Database
 
@@ -9,6 +12,7 @@ Make sure to add the master.key file in the `/config`-directory.
 Load fixtures for a single station (Lago Maggiore, Locarno) with random measurements:
 
 ```
+bin/rails db:migrate
 bin/rails db:fixtures:load
 bin/rails db:seed
 ```
