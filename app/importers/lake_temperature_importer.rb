@@ -51,6 +51,8 @@ class LakeTemperatureImporter
   end
 
   def station_numbers_by_name(lake_name)
+    # TODO: Check since there are more lakes now on the webpage (eg. aegerisee,
+    # st moritz, silavaplaner ...)
     case lake_name
       when 'Bielersee'
         [2208]
