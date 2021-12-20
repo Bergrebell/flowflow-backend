@@ -25,5 +25,3 @@ staging:
 production:
   <<: *default
   database: hydrodaten_production
-  username: rails
-  password: involve_bursa_inimical_hinder_linear
