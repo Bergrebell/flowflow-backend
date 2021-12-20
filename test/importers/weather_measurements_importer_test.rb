@@ -10,9 +10,9 @@ class WeatherMeasurementsImporterTest < ActiveJob::TestCase
     assert_equal 111, WeatherMeasurement.count
 
     test_measurements = {
-      'TAE': [13.0, 10.0, 9.4, 0.0],
-      'CGI': [12.9, 10.0, 13.0, 0.0],
-      'THU': [13.2, 10.0, 9.4, 0.0]
+      'TAE': [1.0, 0.0, 3.6, 0.0],
+      'CGI': [0.9, 0.0, 17.3, 0.0],
+      'THU': [-3.7, 0.0, 5.4, 0.0]
     }
 
     test_measurements.each do |number, values|
