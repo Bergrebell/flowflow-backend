@@ -1,0 +1,19 @@
+{
+  "name": "flowflow-backend",
+  "description": "Water data visualisation app for Swiss rivers and lakes.",
+  "keywords": [
+    "dokku",
+    "rails"
+  ],
+  "scripts": {
+    "dokku": {
+      "postdeploy": "bundle exec rails db:migrate"
+    }
+  },
+  "cron": [
+    {
+      "command": "import data from all data-sources",
+      "schedule": "5,15,25,35,45,55 * * * *"
+    }
+  ]
+}

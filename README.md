@@ -1,5 +1,5 @@
 # FlowFlow
-Roman Küpper & Serge Hänni
+Authors: Roman Küpper & Serge Hänni
 
 ## Datasources
 APIs:
