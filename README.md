@@ -34,13 +34,22 @@ dafuse dump production
 
 You find the database dump in `/tmp/database`.
 
+## Hosting
+
+The app is deployed on a digitalocean droplet via [dokku](https://dokku.com/). The 
+hosting is roughly based on [this guide](https://github.com/Bergrebell/dokku-rails6).
+
+To access the server and configure dokku run: `ssh root@164.90.230.50` (setup ssh-key 
+via digital-ocean first). 
+
 ## Deployment
 
-The API is deployed to a DigitalOcean droplet.
+To deploy the app simply run `git push dokku BRANCHNAME`. 
 
-```
-bundle exec cap production deploy
-```
+Some configurations can be found inside the ./app.json-file inside the rails-application.
+Eg. here we set the *cronjob* that runs the `import:all` task every 10min or runs the
+migrations in the postdeploy hook. 
+
 
 ## Coordinates
 
