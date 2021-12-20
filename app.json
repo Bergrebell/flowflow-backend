@@ -12,7 +12,7 @@
   },
   "cron": [
     {
-      "command": "import data from all data-sources",
+      "command": "bundle exec rails import:all",
       "schedule": "5,15,25,35,45,55 * * * *"
     }
   ]
